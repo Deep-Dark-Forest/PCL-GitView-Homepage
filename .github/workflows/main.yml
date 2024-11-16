@@ -15,7 +15,7 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.name "Deep-Dark-Forest"
+          git config --global user.name "sheep_city"
           git config --global user.email "sheep_city@noreply.gitcode.com"
 
       - name: Force Push to GitCode
