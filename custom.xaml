@@ -1,0 +1,43 @@
+﻿<ScrollViewer>
+        <StackPanel Margin="10">
+            <!-- 可折叠区域 -->
+            <local:MyCard Title="所有状态 Issue 数据" Margin="0,0,0,15" CanSwap="True" IsSwaped="True">
+                <StackPanel Margin="25,40,23,15">
+                    <!-- 卡片列表 -->
+                    <UniformGrid Rows="3" Columns="4" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <!-- Bug 反馈数卡片 -->
+                        <local:MyCard Title="Bug 反馈数" Margin="5" CanSwap="False">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15">
+                                <TextBlock Text="Bug 反馈数" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                                <TextBlock Text="{Binding BugCount}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </local:MyCard>
+
+                        <!-- 优化反馈数卡片 -->
+                        <local:MyCard Title="优化反馈数" Margin="5" CanSwap="False">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15">
+                                <TextBlock Text="优化反馈数" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                                <TextBlock Text="{Binding OptimizationCount}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </local:MyCard>
+
+                        <!-- 新功能反馈数卡片 -->
+                        <local:MyCard Title="新功能反馈数" Margin="5" CanSwap="False">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15">
+                                <TextBlock Text="新功能反馈数" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                                <TextBlock Text="{Binding FeatureRequestCount}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </local:MyCard>
+
+                        <!-- 暂无计划反馈数卡片 -->
+                        <local:MyCard Title="暂无计划反馈数" Margin="5" CanSwap="False">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15">
+                                <TextBlock Text="暂无计划反馈数" FontSize="14" Foreground="Gray" HorizontalAlignment="Center"/>
+                                <TextBlock Text="{Binding NoPlanCount}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </local:MyCard>
+                    </UniformGrid>
+                </StackPanel>
+            </local:MyCard>
+        </StackPanel>
+    </ScrollViewer>
