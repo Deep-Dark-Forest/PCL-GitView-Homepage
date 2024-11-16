@@ -12,15 +12,27 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Configure Git
         run: |
           git config --global user.name "sheep_city"
           git config --global user.email "sheep_city@noreply.gitcode.com"
 
-      - name: Force Push to GitCode
+      - name: Fetch from GitCode
         env:
           GITCODE_SECRET: ${{ secrets.GITCODE }}
         run: |
           git remote add gitcode https://oauth2:${GITCODE_SECRET}@gitcode.com/PCL-Community/PCL-GitView-Homepage.git
-          git push --force gitcode main
+          git fetch --unshallow gitcode main || true
+
+      - name: Pull and Rebase
+        run: |
+          git pull --rebase gitcode main || git rebase --skip
+
+      - name: Push to GitCode
+        env:
+          GITCODE_SECRET: ${{ secrets.GITCODE }}
+        run: |
+          git push gitcode main
