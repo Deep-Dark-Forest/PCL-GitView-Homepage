@@ -1,0 +1,27 @@
+name: Sync to GitCode
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "Deep-Dark-Forest"
+          git config --global user.email "sheep_city@noreply.gitcode.com"
+
+      - name: Push to GitCode
+        env:
+          GITCODE_SECRET: ${{ secrets.GITCODE }}
+        run: |
+          git remote add gitcode https://oauth2:${GITCODE_SECRET}@gitcode.com/PCL-Community/PCL-GitView-Homepage.git
+          
+          git push gitcode main
